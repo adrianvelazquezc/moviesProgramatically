@@ -13,5 +13,9 @@ class movies_HomeRouter{
 }
 
 extension movies_HomeRouter: movies_HomeRouterProtocol{
+    func navigateToNextView() {
+        
+    }
+    
     
 }

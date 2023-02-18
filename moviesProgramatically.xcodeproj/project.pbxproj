@@ -18,6 +18,7 @@
 		CE1CCC41299FF731006B0C3C /* movies_HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CCC39299FF731006B0C3C /* movies_HomeInteractor.swift */; };
 		CE1CCC42299FF731006B0C3C /* movies_HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CCC3A299FF731006B0C3C /* movies_HomeView.swift */; };
 		CE1CCC43299FF731006B0C3C /* movies_HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CCC3B299FF731006B0C3C /* movies_HomeEntity.swift */; };
+		CE1CCC45299FF95B006B0C3C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CCC44299FF95B006B0C3C /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		CE1CCC39299FF731006B0C3C /* movies_HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movies_HomeInteractor.swift; sourceTree = "<group>"; };
 		CE1CCC3A299FF731006B0C3C /* movies_HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movies_HomeView.swift; sourceTree = "<group>"; };
 		CE1CCC3B299FF731006B0C3C /* movies_HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movies_HomeEntity.swift; sourceTree = "<group>"; };
+		CE1CCC44299FF95B006B0C3C /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		CE1CCC33299FF6B8006B0C3C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CE1CCC44299FF95B006B0C3C /* String+Extension.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				CE1CCC3C299FF731006B0C3C /* movies_HomeViewUI.swift in Sources */,
 				CE1CCC3E299FF731006B0C3C /* movies_HomeRouter.swift in Sources */,
 				CE1CCC42299FF731006B0C3C /* movies_HomeView.swift in Sources */,
+				CE1CCC45299FF95B006B0C3C /* String+Extension.swift in Sources */,
 				CE1CCC1E299FF4C1006B0C3C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

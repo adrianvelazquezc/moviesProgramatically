@@ -22,9 +22,17 @@ class movies_HomeView: UIViewController {
 }
 
 extension movies_HomeView: movies_HomeViewProtocol {
+    func notifyError(error: String) {
+        
+    }
+    
     
 }
 
 extension movies_HomeView: movies_HomeViewUIDelegate {
+    func notifyUserAndPassword(name: String, password: String) {
+        self.presenter?.requestUserAndPassword(name: name, password: password)
+    }
+    
     
 }

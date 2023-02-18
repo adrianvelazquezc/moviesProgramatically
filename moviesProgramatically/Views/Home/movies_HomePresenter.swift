@@ -16,5 +16,18 @@ class movies_HomePresenter {
 
 
 extension movies_HomePresenter: movies_HomePresenterProtocol {
+    func requestUserAndPassword(name: String, password: String) {
+        self.interactor?.fetchUserAndPassword(name: "a", password: "b", tempToken: "a")
+//        self.interactor?.fetchToken(name: name, password: password)
+    }
+    
+    func responseUserAndPassword() {
+        self.router?.navigateToNextView()
+    }
+    
+    func responseError(error: String) {
+        self.view?.notifyError(error: error)
+    }
+    
     
 }
