@@ -9,6 +9,8 @@ import Foundation
 
 protocol movies_HomeViewProtocol: AnyObject {
     func notifyError(error: String)
+    func showLoading()
+    func dissmissLoading()
 }
 
 protocol movies_HomeInteractorProtocol: AnyObject {

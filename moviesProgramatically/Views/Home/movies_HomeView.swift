@@ -25,8 +25,15 @@ extension movies_HomeView: movies_HomeViewProtocol {
     func notifyError(error: String) {
         
     }
+    func showLoading() {
+        movies_ActivityIndicator.show(parent: self.view)
+    }
     
-    
+    func dissmissLoading() {
+        DispatchQueue.main.async {
+            movies_ActivityIndicator.remove(parent: self.view)
+        }
+    }
 }
 
 extension movies_HomeView: movies_HomeViewUIDelegate {

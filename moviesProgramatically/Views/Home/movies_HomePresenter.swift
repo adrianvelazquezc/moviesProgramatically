@@ -17,14 +17,17 @@ class movies_HomePresenter {
 
 extension movies_HomePresenter: movies_HomePresenterProtocol {
     func requestUserAndPassword(name: String, password: String) {
+        self.view?.showLoading()
         self.interactor?.fetchToken(name: name, password: password)
     }
     
     func responseUserAndPassword() {
+        self.view?.dissmissLoading()
         self.router?.navigateToNextView()
     }
     
     func responseError(error: String) {
+        self.view?.dissmissLoading()
         self.view?.notifyError(error: error)
     }
     
