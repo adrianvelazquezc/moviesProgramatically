@@ -13,7 +13,7 @@ class movies_HomeInteractor{
 
 extension movies_HomeInteractor: movies_HomeInteractorProtocol {
     func fetchToken(name: String, password: String) {
-        let urlString = "https://api.themoviedb.org/3/authentication/token/new?api_key=e142ca6d5b52024931683472e1abbef2"
+        let urlString = "https://api.themoviedb.org/3/authentication/token/new?api_key=\(MoviesValues.shared.apiKey)"
         if let urlObject = URL(string: urlString){
             var urlRequest = URLRequest(url: urlObject)
             urlRequest.httpMethod = "GET"
@@ -57,17 +57,23 @@ extension movies_HomeInteractor: movies_HomeInteractorProtocol {
                 if let respuestaDiferente = responseData {
                     if let data = try? JSONDecoder().decode(PeliculaLogin.self, from: respuestaDiferente){
                         if let success = data.success {
-                            if success == true {
-                                self.presenter?.responseUserAndPassword()
-                            }
-                            else {
-                                self.presenter?.responseError(error: "\(data.status_message)")
+                            DispatchQueue.main.async {
+                                if success == true {
+                                    self.presenter?.responseUserAndPassword()
+                                }
+                                else {
+                                    if let error = data.status_message {
+                                        self.presenter?.responseError(error: error)
+                                    }
+                                }
                             }
                         }
                     }
                 }
                 if let respuestaError = responseError {
-                    self.presenter?.responseError(error: "\(respuestaError)")
+                    DispatchQueue.main.async {
+                        self.presenter?.responseError(error: "\(respuestaError)")
+                    }
                     return
                 }
             }

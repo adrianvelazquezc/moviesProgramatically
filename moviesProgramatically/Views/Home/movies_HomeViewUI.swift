@@ -40,8 +40,8 @@ class movies_HomeViewUI: UIView{
         textfield.layer.borderWidth = 0.5
         textfield.layer.cornerRadius = 10
         let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textfield.frame.size.height))
-            textfield.leftView = leftView
-            textfield.leftViewMode = .always
+        textfield.leftView = leftView
+        textfield.leftViewMode = .always
         return textfield
     }()
     
@@ -61,8 +61,8 @@ class movies_HomeViewUI: UIView{
         textfield.layer.borderWidth = 0.5
         textfield.layer.cornerRadius = 10
         let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textfield.frame.size.height))
-            textfield.leftView = leftView
-            textfield.leftViewMode = .always
+        textfield.leftView = leftView
+        textfield.leftViewMode = .always
         return textfield
     }()
     

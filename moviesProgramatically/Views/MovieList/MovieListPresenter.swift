@@ -16,5 +16,20 @@ class MovieListPresenter {
 
 
 extension MovieListPresenter: MovieListPresenterProtocol {
+    func requestMovieList() {
+        self.view?.showLoading()
+        self.interactor?.fetchMovieList()
+    }
+    
+    func responseMovieList(_ list: [Pelicula]) {
+        self.view?.dissmissLoading()
+        view?.notifyMovieList(list: list)
+    }
+    
+    func responseError(error: String, step: ListService) {
+        self.view?.dissmissLoading()
+        view?.notifyError(error: error, step: step)
+    }
+    
     
 }
