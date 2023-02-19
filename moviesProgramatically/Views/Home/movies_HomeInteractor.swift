@@ -40,11 +40,10 @@ extension movies_HomeInteractor: movies_HomeInteractorProtocol {
             var urlRequest = URLRequest(url: urlObject)
             urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.httpMethod = "POST"
-            print(tempToken)
             let body: [String: String] = [
-                "username": "adrianvelazquezc",
-                "password": "sU.!JEBT.j.S4Ru",
-                "request_token": "6d37df5e103621a5d147121eb147dda75e5319d2"
+                "username": name,
+                "password": password,
+                "request_token": tempToken
             ]
             
             guard let httpBody = try? JSONSerialization.data(withJSONObject: body, options: []) else {
@@ -55,15 +54,15 @@ extension movies_HomeInteractor: movies_HomeInteractorProtocol {
             urlRequest.httpBody = httpBody
             
             let task =  URLSession.shared.dataTask(with: urlRequest) { responseData, responseCode, responseError in
-                    if let auxResponse = responseCode as? HTTPURLResponse {
-                        let auxResponseCode = auxResponse.statusCode
-                        print(auxResponse.statusCode)
-                    }
                 if let respuestaDiferente = responseData {
                     if let data = try? JSONDecoder().decode(PeliculaLogin.self, from: respuestaDiferente){
                         if let success = data.success {
-                            print(data.status_message)
-                            print(success)
+                            if success == true {
+                                self.presenter?.responseUserAndPassword()
+                            }
+                            else {
+                                self.presenter?.responseError(error: "\(data.status_message)")
+                            }
                         }
                     }
                 }

@@ -36,6 +36,7 @@ class movies_HomeViewUI: UIView{
         let textfield = UITextField()
         textfield.translatesAutoresizingMaskIntoConstraints = false
         textfield.layer.borderColor = UIColor.black.cgColor
+        textfield.text = "adrianvelazquezc"
         textfield.layer.borderWidth = 0.5
         textfield.layer.cornerRadius = 10
         let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textfield.frame.size.height))
@@ -56,6 +57,7 @@ class movies_HomeViewUI: UIView{
         let textfield = UITextField()
         textfield.translatesAutoresizingMaskIntoConstraints = false
         textfield.layer.borderColor = UIColor.black.cgColor
+        textfield.text = "sU.!JEBT.j.S4Ru"
         textfield.layer.borderWidth = 0.5
         textfield.layer.cornerRadius = 10
         let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textfield.frame.size.height))

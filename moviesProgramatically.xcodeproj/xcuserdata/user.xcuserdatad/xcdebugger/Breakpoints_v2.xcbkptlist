@@ -3,4 +3,70 @@
    uuid = "43D1339F-2508-4A8E-BDA8-3D2F989623A8"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CBE8330C-F016-4FBC-B63D-51B4AD6671E1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moviesProgramatically/Views/Home/movies_HomeInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "fetchUserAndPassword(name:password:tempToken:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CBE8330C-F016-4FBC-B63D-51B4AD6671E1 - f867d1424519b7a3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in moviesProgramatically.movies_HomeInteractor.fetchUserAndPassword(name: Swift.String, password: Swift.String, tempToken: Swift.String) -&gt; ()"
+                  moduleName = "moviesProgramatically"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/M2%20BackUp/Proyectos%20Viper/moviesProgramatically/moviesProgramatically/Views/Home/movies_HomeInteractor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "690">
+               </Location>
+               <Location
+                  uuid = "CBE8330C-F016-4FBC-B63D-51B4AD6671E1 - f867d1424519b7a3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in moviesProgramatically.movies_HomeInteractor.fetchUserAndPassword(name: Swift.String, password: Swift.String, tempToken: Swift.String) -&gt; ()"
+                  moduleName = "moviesProgramatically"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/M2%20BackUp/Proyectos%20Viper/moviesProgramatically/moviesProgramatically/Views/Home/movies_HomeInteractor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "708">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0F8E712E-529D-4A0F-9D64-7C99D79DC34F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "moviesProgramatically/Views/Home/movies_HomeInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "fetchUserAndPassword(name:password:tempToken:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

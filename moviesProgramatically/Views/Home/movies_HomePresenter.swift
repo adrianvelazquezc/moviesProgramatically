@@ -17,8 +17,7 @@ class movies_HomePresenter {
 
 extension movies_HomePresenter: movies_HomePresenterProtocol {
     func requestUserAndPassword(name: String, password: String) {
-        self.interactor?.fetchUserAndPassword(name: "a", password: "b", tempToken: "a")
-//        self.interactor?.fetchToken(name: name, password: password)
+        self.interactor?.fetchToken(name: name, password: password)
     }
     
     func responseUserAndPassword() {
