@@ -17,3 +17,12 @@ public func getDecorativeTitleText(text: String, color: UIColor = .black) -> NSM
     
     return attributedString
 }
+public func parseDate(_ str : String, oldDateFormat: String) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = oldDateFormat
+    
+    let date = dateFormatter.date(from: str) ?? Date()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        let formattedDate = dateFormatter.string(from: date)
+    return formattedDate
+}
