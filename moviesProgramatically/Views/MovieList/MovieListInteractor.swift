@@ -47,8 +47,7 @@ extension MovieListInteractor: MovieListInteractorProtocol {
     }
     
     func fetchFavoriteMovie(movieId: Int) {
-        //        "\(MoviesValues.shared.initialPath)account\(MoviesValues.shared.userName)/favorite?api_key=\(MoviesValues.shared.apiKey)&session_id=\(MoviesValues.shared.sesionID)"
-        let urlString = "https://api.themoviedb.org/3/account/adrianvelazquezc/favorite?api_key=e142ca6d5b52024931683472e1abbef2&session_id=102be39b19425434cc3aa69cd2427e58d9294973"
+        let urlString = "\(MoviesValues.shared.initialPath)account/\(MoviesValues.shared.userName)/favorite?api_key=\(MoviesValues.shared.apiKey)&session_id=\(MoviesValues.shared.sesionID)"
         
         if let urlObject = URL(string: urlString){
             var urlRequest = URLRequest(url: urlObject)
