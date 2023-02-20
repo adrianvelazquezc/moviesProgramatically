@@ -15,11 +15,11 @@ protocol MovieListViewProtocol: AnyObject {
 }
 
 protocol MovieListInteractorProtocol: AnyObject {
-    func fetchMovieList()
+    func fetchMovieList(gender: moviesCategories)
 }
 
 protocol MovieListPresenterProtocol: AnyObject {
-    func requestMovieList()
+    func requestMovieList(gender: moviesCategories)
     func responseMovieList(_ list: [Pelicula])
     func responseError(error: String, step: ListService)
 }

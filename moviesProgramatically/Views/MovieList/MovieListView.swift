@@ -17,7 +17,7 @@ class MovieListView: UIViewController {
     private var ui: MovieListViewUI?
     private var currentStep: ListService = .initialList
     
-    internal var titleNavigation = "Peliculas" {
+    internal var titleNavigation = "TV Shows" {
         didSet {
             self.navigationItem.title = titleNavigation
         }
@@ -28,18 +28,21 @@ class MovieListView: UIViewController {
             navigation: self.navigationController!,
             delegate: self
         )
-        self.navigationItem.title = titleNavigation
+        self.navigationController?.isNavigationBarHidden = true
         view = ui
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter?.requestMovieList()
+        self.presenter?.requestMovieList(gender: ui?.valueSelected ?? moviesCategories.popular)
     }
     
     private func retryService(){
         switch currentStep {
         case .initialList:
-            self.presenter?.requestMovieList()
+            self.presenter?.requestMovieList(gender: ui?.valueSelected ?? moviesCategories.popular)
         }
     }
 }
@@ -72,5 +75,9 @@ extension MovieListView: MovieListViewProtocol {
 }
 
 extension MovieListView: MovieListViewUIDelegate {
+    func notifyGenderSelected() {
+        self.presenter?.requestMovieList(gender: ui?.valueSelected ?? moviesCategories.popular)
+    }
+    
     
 }

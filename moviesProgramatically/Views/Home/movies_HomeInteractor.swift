@@ -13,7 +13,7 @@ class movies_HomeInteractor{
 
 extension movies_HomeInteractor: movies_HomeInteractorProtocol {
     func fetchToken(name: String, password: String) {
-        let urlString = "https://api.themoviedb.org/3/authentication/token/new?api_key=\(MoviesValues.shared.apiKey)"
+        let urlString = "\(MoviesValues.shared.initialPath)authentication/token/new?api_key=\(MoviesValues.shared.apiKey)"
         if let urlObject = URL(string: urlString){
             var urlRequest = URLRequest(url: urlObject)
             urlRequest.httpMethod = "GET"
@@ -35,7 +35,7 @@ extension movies_HomeInteractor: movies_HomeInteractorProtocol {
     }
     
     func fetchUserAndPassword(name: String, password: String, tempToken: String) {
-        let urlString = "https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=e142ca6d5b52024931683472e1abbef2"
+        let urlString = "\(MoviesValues.shared.initialPath)authentication/token/validate_with_login?api_key=\(MoviesValues.shared.apiKey)"
         if let urlObject = URL(string: urlString){
             var urlRequest = URLRequest(url: urlObject)
             urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")

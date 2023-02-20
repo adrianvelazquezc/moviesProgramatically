@@ -16,9 +16,9 @@ class MovieListPresenter {
 
 
 extension MovieListPresenter: MovieListPresenterProtocol {
-    func requestMovieList() {
+    func requestMovieList(gender: moviesCategories) {
         self.view?.showLoading()
-        self.interactor?.fetchMovieList()
+        self.interactor?.fetchMovieList(gender: gender)
     }
     
     func responseMovieList(_ list: [Pelicula]) {

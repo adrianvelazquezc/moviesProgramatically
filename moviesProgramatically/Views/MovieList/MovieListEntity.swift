@@ -29,11 +29,8 @@ struct Pelicula: Codable{
         case over = "overview"
     }
 }
-
-public struct moviesCategories {
-    public var latest = ""
-    public var nowPlaying = ""
-    public var popular = ""
-    public var topRated = ""
-    public var upcoming = ""
+public enum moviesCategories {
+    case popular
+    case top_rated
+    case upcoming
 }

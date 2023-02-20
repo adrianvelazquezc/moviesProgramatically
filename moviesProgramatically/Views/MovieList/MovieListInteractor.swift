@@ -13,8 +13,8 @@ class MovieListInteractor{
 
 extension MovieListInteractor: MovieListInteractorProtocol {
     
-    func fetchMovieList(){
-        let urlString = "https://api.themoviedb.org/3/movie/popular"
+    func fetchMovieList(gender: moviesCategories) {
+        let urlString = "\(MoviesValues.shared.initialPath)movie/\(gender)"
         if var urlComponents = URLComponents(string: urlString) {
             urlComponents.queryItems = [
                 URLQueryItem(name: "api_key", value: MoviesValues.shared.apiKey),
@@ -45,5 +45,4 @@ extension MovieListInteractor: MovieListInteractorProtocol {
             }
         }
     }
-
 }

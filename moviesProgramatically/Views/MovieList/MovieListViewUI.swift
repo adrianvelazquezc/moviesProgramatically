@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol MovieListViewUIDelegate {
-    
+    func notifyGenderSelected()
 }
 
 class MovieListViewUI: UIView{
@@ -17,7 +17,43 @@ class MovieListViewUI: UIView{
     var navigationController: UINavigationController?
     public var movieList: [Pelicula]?
     private var firstURL:String = "https://image.tmdb.org/t/p/w500"
+    public var valueSelected: moviesCategories = .popular
     
+    private var moviesSegmentedControl: UISegmentedControl = {
+        let control = UISegmentedControl()
+        control.translatesAutoresizingMaskIntoConstraints = false
+        control.removeAllSegments()
+        
+        for (index, value) in ["Popular", "Top Rated", "Upcoming"].enumerated() {
+            control.insertSegment(withTitle: value, at: index, animated: true)
+        }
+        let font = UIFont.systemFont(ofSize: 16)
+        control.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        control.backgroundColor = .clear
+        control.selectedSegmentIndex = 0
+        let normalAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: font
+        ]
+        control.setTitleTextAttributes(normalAttributes, for: .normal)
+        control.selectedSegmentTintColor = .lightGray
+        control.addTarget(self, action: #selector(movieValueSelectedChanged(_:)), for: .valueChanged)
+        return control
+    }()
+    
+    @objc func movieValueSelectedChanged(_ sender: UISegmentedControl) {
+        switch moviesSegmentedControl.selectedSegmentIndex {
+        case 0:
+            valueSelected = .popular
+        case 1:
+            valueSelected = .top_rated
+        case 2:
+            valueSelected = .upcoming
+        default:
+            valueSelected = .popular
+        }
+        delegate?.notifyGenderSelected()
+    }
     public lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -27,7 +63,7 @@ class MovieListViewUI: UIView{
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor =  #colorLiteral(red: 0.03991495073, green: 0.08235343546, blue: 0.1102337912, alpha: 1)
         return collectionView
     }()
     
@@ -44,7 +80,7 @@ class MovieListViewUI: UIView{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .white
+        self.backgroundColor =  #colorLiteral(red: 0.03991495073, green: 0.08235343546, blue: 0.1102337912, alpha: 1)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -52,12 +88,17 @@ class MovieListViewUI: UIView{
     }
     
     func setUI(){
+        self.addSubview(moviesSegmentedControl)
         self.addSubview(collectionView)
     }
     
     func setConstraints(){
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            moviesSegmentedControl.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            moviesSegmentedControl.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25),
+            moviesSegmentedControl.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25),
+            
+            collectionView.topAnchor.constraint(equalTo: moviesSegmentedControl.bottomAnchor, constant: 20),
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
