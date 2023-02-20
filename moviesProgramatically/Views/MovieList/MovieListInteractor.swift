@@ -45,4 +45,53 @@ extension MovieListInteractor: MovieListInteractorProtocol {
             }
         }
     }
+    
+    func fetchFavoriteMovie(movieId: Int) {
+        //        "\(MoviesValues.shared.initialPath)account\(MoviesValues.shared.userName)/favorite?api_key=\(MoviesValues.shared.apiKey)&session_id=\(MoviesValues.shared.sesionID)"
+        let urlString = "https://api.themoviedb.org/3/account/adrianvelazquezc/favorite?api_key=e142ca6d5b52024931683472e1abbef2&session_id=102be39b19425434cc3aa69cd2427e58d9294973"
+        
+        if let urlObject = URL(string: urlString){
+            var urlRequest = URLRequest(url: urlObject)
+            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.httpMethod = "POST"
+            let body: [String: Any] = [
+                "media_type": "movie",
+                "media_id": movieId,
+                "favorite": true
+            ]
+            
+            guard let httpBody = try? JSONSerialization.data(withJSONObject: body, options: []) else {
+                self.presenter?.responseError(error: "Failed to create JSON body", step: .addingFavorite)
+                return
+            }
+            
+            urlRequest.httpBody = httpBody
+            
+            let task =  URLSession.shared.dataTask(with: urlRequest) { responseData, responseCode, responseError in
+                if let respuestaDiferente = responseData {
+                    if let data = try? JSONDecoder().decode(PeliculaLogin.self, from: respuestaDiferente){
+                        if let success = data.success {
+                            DispatchQueue.main.async {
+                                if success == true {
+                                    self.presenter?.responseFavoriteMovie()
+                                }
+                                else {
+                                    if let error = data.status_message {
+                                        self.presenter?.responseError(error: error, step: .addingFavorite)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if let respuestaError = responseError {
+                    DispatchQueue.main.async {
+                        self.presenter?.responseError(error: "\(respuestaError)", step: .addingFavorite)
+                    }
+                    return
+                }
+            }
+            task.resume()
+        }
+    }
 }

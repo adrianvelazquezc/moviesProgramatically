@@ -11,6 +11,7 @@ import UIKit
 class movies_GeneralMoviesListViewCell: UICollectionViewCell {
     
     static let identifier = "movies_GeneralMoviesListViewCell"
+    let serviceManager: ServicesManager = ServicesManager()
     
     private var mainContainer: UIView = {
         let view = UIView()
@@ -20,10 +21,12 @@ class movies_GeneralMoviesListViewCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
     public var posterPicture: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.cornerRadius = 30
+        image.contentMode = .scaleToFill
         image.clipsToBounds = true
         return image
     }()
@@ -72,11 +75,17 @@ class movies_GeneralMoviesListViewCell: UICollectionViewCell {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.tintColor = #colorLiteral(red: 0.4548825622, green: 0.8329617977, blue: 0.4634124041, alpha: 1)
         image.image = UIImage(systemName: "star.fill")
+        image.isUserInteractionEnabled = true
         return image
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        
+        let gestoTap = UITapGestureRecognizer(target: self, action: #selector(favoriteTapped(_:)))
+        starPicture.addGestureRecognizer(gestoTap)
+        
         setupUIElements()
         setupConstraints()
     }
@@ -103,22 +112,23 @@ class movies_GeneralMoviesListViewCell: UICollectionViewCell {
     
     fileprivate func setupConstraints() {
         NSLayoutConstraint.activate([
-            self.mainContainer.topAnchor.constraint(equalTo: self.topAnchor),
+            self.mainContainer.topAnchor.constraint(equalTo: self.topAnchor, constant: 15),
             self.mainContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25),
             self.mainContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25),
             self.mainContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25),
-            self.mainContainer.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.mainContainer.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -15),
             
             self.posterPicture.topAnchor.constraint(equalTo: mainContainer.topAnchor),
             self.posterPicture.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor),
             self.posterPicture.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor),
             self.posterPicture.widthAnchor.constraint(equalToConstant: 100),
-            self.posterPicture.heightAnchor.constraint(equalToConstant: 200),
+            self.posterPicture.heightAnchor.constraint(equalTo: mainContainer.heightAnchor, multiplier: 0.60),
             
             self.titleLabel.topAnchor.constraint(equalTo: posterPicture.bottomAnchor, constant: 10),
             self.titleLabel.leadingAnchor.constraint(equalTo: mainContainer.leadingAnchor, constant: 10),
             self.titleLabel.trailingAnchor.constraint(equalTo: mainContainer.trailingAnchor, constant: -10),
-            self.dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            
+            self.dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
             self.dateLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             
             self.averangeLabel.topAnchor.constraint(equalTo: dateLabel.topAnchor),
@@ -136,5 +146,9 @@ class movies_GeneralMoviesListViewCell: UICollectionViewCell {
             self.resumeLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             self.resumeLabel.bottomAnchor.constraint(equalTo: mainContainer.bottomAnchor, constant: -20),
         ])
+    }
+    
+    @objc func favoriteTapped(_ sender: UITapGestureRecognizer){
+        print("estrella")
     }
 }

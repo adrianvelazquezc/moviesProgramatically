@@ -10,6 +10,7 @@ import UIKit
 
 public enum ListService {
     case initialList
+    case addingFavorite
 }
 
 class MovieListView: UIViewController {
@@ -43,11 +44,20 @@ class MovieListView: UIViewController {
         switch currentStep {
         case .initialList:
             self.presenter?.requestMovieList(gender: ui?.valueSelected ?? moviesCategories.popular)
+        case .addingFavorite:
+            self.presenter?.requestFavoriteMovie(movieId: ui?.currendMovieId ?? 0)
         }
     }
 }
 
 extension MovieListView: MovieListViewProtocol {
+    
+    func successFavoriteAdded() {
+        let profileController = movies_ProfilePresent()
+        self.present(profileController, animated: true, completion: nil)
+    }
+    
+    
     func notifyError(error: String, step: ListService) {
         let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
@@ -75,6 +85,14 @@ extension MovieListView: MovieListViewProtocol {
 }
 
 extension MovieListView: MovieListViewUIDelegate {
+    func notifyAddFavorite(movieId: Int) {
+            self.presenter?.requestFavoriteMovie(movieId: movieId)
+    }
+    
+    func notifyMenuPressed() {
+        self.successFavoriteAdded()
+    }
+    
     func notifyGenderSelected() {
         self.presenter?.requestMovieList(gender: ui?.valueSelected ?? moviesCategories.popular)
     }

@@ -7,11 +7,12 @@
 
 import UIKit
 
-public func getDecorativeTitleText(text: String, color: UIColor = .black) -> NSMutableAttributedString {
+public func getDecorativeTitleText(text: String, color: UIColor = .black, font: UIFont = .systemFont(ofSize: 30, weight: .bold)) -> NSMutableAttributedString {
     
     let multipleAttributes: [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.foregroundColor: color,
-        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30.0)]
+        NSAttributedString.Key.font: font
+    ]
     
     let attributedString = NSMutableAttributedString(string: text, attributes: multipleAttributes)
     

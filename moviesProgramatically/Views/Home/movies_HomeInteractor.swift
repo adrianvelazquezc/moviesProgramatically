@@ -59,6 +59,8 @@ extension movies_HomeInteractor: movies_HomeInteractorProtocol {
                         if let success = data.success {
                             DispatchQueue.main.async {
                                 if success == true {
+                                    MoviesValues.shared.userName = name
+                                    MoviesValues.shared.userID = tempToken
                                     self.presenter?.responseUserAndPassword()
                                 }
                                 else {

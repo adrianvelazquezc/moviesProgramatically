@@ -16,6 +16,16 @@ class MovieListPresenter {
 
 
 extension MovieListPresenter: MovieListPresenterProtocol {
+    func requestFavoriteMovie(movieId: Int) {
+        self.view?.showLoading()
+        self.interactor?.fetchFavoriteMovie(movieId: movieId)
+    }
+    
+    func responseFavoriteMovie() {
+        self.view?.dissmissLoading()
+        view?.successFavoriteAdded()
+    }
+    
     func requestMovieList(gender: moviesCategories) {
         self.view?.showLoading()
         //se agrego un pequenio delay, para que se aprecie el loader

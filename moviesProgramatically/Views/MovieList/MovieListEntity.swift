@@ -37,3 +37,11 @@ public enum moviesCategories {
     case top_rated
     case upcoming
 }
+
+struct postFavoriteResponse: Codable{
+    let success: Bool?
+    
+    enum CodingKeys: String, CodingKey{
+        case success = "success"
+    }
+}

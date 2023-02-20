@@ -10,14 +10,17 @@ import UIKit
 
 protocol MovieListViewUIDelegate {
     func notifyGenderSelected()
+    func notifyMenuPressed()
+    func notifyAddFavorite(movieId: Int)
 }
 
 class MovieListViewUI: UIView{
     var delegate: MovieListViewUIDelegate?
+    
     var navigationController: UINavigationController?
     public var movieList: [Pelicula]?
-    lazy private var firstURL:String = "https://image.tmdb.org/t/p/w500"
     public var valueSelected: moviesCategories = .popular
+    public var currendMovieId = 0
     
     lazy private var navigationBar: movies_NavigationBar = {
         let navigationBar = movies_NavigationBar()
@@ -125,6 +128,10 @@ class MovieListViewUI: UIView{
     }
 }
 extension MovieListViewUI: UICollectionViewDelegate, UICollectionViewDataSource {
+    func favoriteTapped(movieID: Int) {
+        print(movieID)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movieList?.count ?? 0
     }
@@ -133,7 +140,7 @@ extension MovieListViewUI: UICollectionViewDelegate, UICollectionViewDataSource 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: movies_GeneralMoviesListViewCell.identifier, for: indexPath) as! movies_GeneralMoviesListViewCell
         if let list = movieList?[indexPath.row] {
             //imagen
-            if let url = URL(string: firstURL + list.urlPic! ?? "") {
+            if let url = URL(string: MoviesValues.shared.firstURL + list.urlPic! ?? "") {
                 let session = URLSession.shared
                 let task = session.dataTask(with: url) { (data, response, error) in
                     if let data = data, let image = UIImage(data: data) {
@@ -158,10 +165,22 @@ extension MovieListViewUI: UICollectionViewDelegate, UICollectionViewDataSource 
         }
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let newId = movieList?[indexPath.row].id {
+            currendMovieId = newId
+            self.delegate?.notifyAddFavorite(movieId: newId)
+        }
+    }
 }
 
 extension MovieListViewUI: movies_NavigationBarDelegate{
     func buttonTapped() {
-        print("siguiente vista")
+        delegate?.notifyMenuPressed()
     }
 }
+
+//extension MovieListViewUI: movies_MoviesListDelegate{
+//    func favoriteTapped(movieID: Int) {
+//        print(movieID)
+//    }
+//}
