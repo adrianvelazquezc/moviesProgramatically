@@ -15,7 +15,7 @@ protocol movies_HomeViewProtocol: AnyObject {
 
 protocol movies_HomeInteractorProtocol: AnyObject {
     func fetchToken(name: String, password: String)
-    func fetchUserAndPassword(name: String, password: String, tempToken: String)
+    func fetchUserAndPassword(name: String, password: String)
 }
 
 protocol movies_HomePresenterProtocol: AnyObject {

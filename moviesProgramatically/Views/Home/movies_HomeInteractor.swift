@@ -21,7 +21,9 @@ extension movies_HomeInteractor: movies_HomeInteractorProtocol {
                 if let respuestaDiferente = responseData {
                     if let data = try? JSONDecoder().decode(PeliculaToken.self, from: respuestaDiferente){
                         if let token = data.token {
-                            self.fetchUserAndPassword(name: name, password: password, tempToken: token)
+                            
+                            MoviesValues.shared.userID = token
+                            self.fetchUserAndPassword(name: name, password: password)
                         }
                     }
                 }
@@ -34,7 +36,7 @@ extension movies_HomeInteractor: movies_HomeInteractorProtocol {
         }
     }
     
-    func fetchUserAndPassword(name: String, password: String, tempToken: String) {
+    func fetchUserAndPassword(name: String, password: String) {
         let urlString = "\(MoviesValues.shared.initialPath)authentication/token/validate_with_login?api_key=\(MoviesValues.shared.apiKey)"
         if let urlObject = URL(string: urlString){
             var urlRequest = URLRequest(url: urlObject)
@@ -43,7 +45,7 @@ extension movies_HomeInteractor: movies_HomeInteractorProtocol {
             let body: [String: String] = [
                 "username": name,
                 "password": password,
-                "request_token": tempToken
+                "request_token": MoviesValues.shared.userID
             ]
             
             guard let httpBody = try? JSONSerialization.data(withJSONObject: body, options: []) else {
@@ -60,7 +62,6 @@ extension movies_HomeInteractor: movies_HomeInteractorProtocol {
                             DispatchQueue.main.async {
                                 if success == true {
                                     MoviesValues.shared.userName = name
-                                    MoviesValues.shared.userID = tempToken
                                     self.presenter?.responseUserAndPassword()
                                 }
                                 else {
