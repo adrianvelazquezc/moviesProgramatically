@@ -20,6 +20,7 @@ struct Pelicula: Codable{
     let urlPic: String?
     let date: String?
     let over: String?
+    let average: Float?
     
     enum CodingKeys: String, CodingKey{
         case id = "id"
@@ -27,8 +28,10 @@ struct Pelicula: Codable{
         case urlPic = "poster_path"
         case date = "release_date"
         case over = "overview"
+        case average = "vote_average"
     }
 }
+
 public enum moviesCategories {
     case popular
     case top_rated

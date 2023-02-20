@@ -57,7 +57,7 @@ class MovieListViewUI: UIView{
     public lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 30) / 2, height: 320)
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 10) / 2, height: 340)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(movies_GeneralMoviesListViewCell.self, forCellWithReuseIdentifier: movies_GeneralMoviesListViewCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -113,7 +113,7 @@ extension MovieListViewUI: UICollectionViewDelegate, UICollectionViewDataSource 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: movies_GeneralMoviesListViewCell.identifier, for: indexPath) as! movies_GeneralMoviesListViewCell
         if let list = movieList?[indexPath.row] {
-            cell.titleLabel.text = list.title
+            //imagen
             if let url = URL(string: firstURL + list.urlPic! ?? "") {
                 let session = URLSession.shared
                 let task = session.dataTask(with: url) { (data, response, error) in
@@ -125,6 +125,16 @@ extension MovieListViewUI: UICollectionViewDelegate, UICollectionViewDataSource 
                 }
                 task.resume()
             }
+            //titulo
+            cell.titleLabel.text = list.title
+            //fecha
+            cell.dateLabel.text = parseDate(list.date ?? "", oldDateFormat: "yyyy-MM-dd")
+            //promedio
+            if let averange = list.average {
+                cell.averangeLabel.text = "\(averange)"
+            }
+            //resenia
+            cell.resumeLabel.text = list.over
             
         }
         return cell

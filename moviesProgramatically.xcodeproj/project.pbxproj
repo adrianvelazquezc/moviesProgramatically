@@ -30,6 +30,7 @@
 		CE1CCC5829A2C86E006B0C3C /* movies_ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CCC5729A2C86E006B0C3C /* movies_ActivityIndicator.swift */; };
 		CE1CCC5C29A2D7AB006B0C3C /* MoviesValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CCC5B29A2D7AB006B0C3C /* MoviesValues.swift */; };
 		CE1CCC5E29A2DD1A006B0C3C /* movies_GeneralMoviesListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CCC5D29A2DD1A006B0C3C /* movies_GeneralMoviesListViewCell.swift */; };
+		CE1CCC6029A312C3006B0C3C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CCC5F29A312C2006B0C3C /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		CE1CCC5729A2C86E006B0C3C /* movies_ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movies_ActivityIndicator.swift; sourceTree = "<group>"; };
 		CE1CCC5B29A2D7AB006B0C3C /* MoviesValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesValues.swift; sourceTree = "<group>"; };
 		CE1CCC5D29A2DD1A006B0C3C /* movies_GeneralMoviesListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movies_GeneralMoviesListViewCell.swift; sourceTree = "<group>"; };
+		CE1CCC5F29A312C2006B0C3C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				CE1CCC44299FF95B006B0C3C /* String+Extension.swift */,
+				CE1CCC5F29A312C2006B0C3C /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE1CCC5C29A2D7AB006B0C3C /* MoviesValues.swift in Sources */,
+				CE1CCC6029A312C3006B0C3C /* Date+Extension.swift in Sources */,
 				CE1CCC5229A07855006B0C3C /* MovieListProtocols.swift in Sources */,
 				CE1CCC5629A07855006B0C3C /* MovieListEntity.swift in Sources */,
 				CE1CCC3F299FF731006B0C3C /* movies_HomeProtocols.swift in Sources */,
