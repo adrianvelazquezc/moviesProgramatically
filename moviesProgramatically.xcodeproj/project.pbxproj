@@ -30,6 +30,7 @@
 		CE1CCC5829A2C86E006B0C3C /* movies_ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CCC5729A2C86E006B0C3C /* movies_ActivityIndicator.swift */; };
 		CE1CCC5C29A2D7AB006B0C3C /* MoviesValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CCC5B29A2D7AB006B0C3C /* MoviesValues.swift */; };
 		CE1CCC5E29A2DD1A006B0C3C /* movies_GeneralMoviesListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CCC5D29A2DD1A006B0C3C /* movies_GeneralMoviesListViewCell.swift */; };
+		CE1CCC6229A318E4006B0C3C /* movies_NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CCC6129A318E4006B0C3C /* movies_NavigationBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		CE1CCC5729A2C86E006B0C3C /* movies_ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movies_ActivityIndicator.swift; sourceTree = "<group>"; };
 		CE1CCC5B29A2D7AB006B0C3C /* MoviesValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesValues.swift; sourceTree = "<group>"; };
 		CE1CCC5D29A2DD1A006B0C3C /* movies_GeneralMoviesListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movies_GeneralMoviesListViewCell.swift; sourceTree = "<group>"; };
+		CE1CCC6129A318E4006B0C3C /* movies_NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movies_NavigationBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				CE1CCC5729A2C86E006B0C3C /* movies_ActivityIndicator.swift */,
+				CE1CCC6129A318E4006B0C3C /* movies_NavigationBar.swift */,
 				CE1CCC5A29A2D749006B0C3C /* Singleton */,
 				CE1CCC5929A2C876006B0C3C /* Extensions */,
 			);
@@ -242,6 +245,7 @@
 				CE1CCC3F299FF731006B0C3C /* movies_HomeProtocols.swift in Sources */,
 				CE1CCC5829A2C86E006B0C3C /* movies_ActivityIndicator.swift in Sources */,
 				CE1CCC3D299FF731006B0C3C /* movies_HomePresenter.swift in Sources */,
+				CE1CCC6229A318E4006B0C3C /* movies_NavigationBar.swift in Sources */,
 				CE1CCC5529A07855006B0C3C /* MovieListView.swift in Sources */,
 				CE1CCC43299FF731006B0C3C /* movies_HomeEntity.swift in Sources */,
 				CE1CCC40299FF731006B0C3C /* movies_HomeMain.swift in Sources */,

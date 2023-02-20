@@ -10,7 +10,7 @@ import UIKit
 
 open class movies_ActivityIndicator {
     
-    private static let tagView = -123456789
+    private static let tagView = -1
     
     private static var movieIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()

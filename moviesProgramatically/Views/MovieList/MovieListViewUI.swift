@@ -16,10 +16,17 @@ class MovieListViewUI: UIView{
     var delegate: MovieListViewUIDelegate?
     var navigationController: UINavigationController?
     public var movieList: [Pelicula]?
-    private var firstURL:String = "https://image.tmdb.org/t/p/w500"
+    lazy private var firstURL:String = "https://image.tmdb.org/t/p/w500"
     public var valueSelected: moviesCategories = .popular
     
-    private var moviesSegmentedControl: UISegmentedControl = {
+    lazy private var navigationBar: movies_NavigationBar = {
+        let navigationBar = movies_NavigationBar()
+        navigationBar.buildComponents(titleText: "TV Shows", delegate: self)
+        navigationBar.translatesAutoresizingMaskIntoConstraints = false
+        return navigationBar
+    }()
+    
+    lazy private var moviesSegmentedControl: UISegmentedControl = {
         let control = UISegmentedControl()
         control.translatesAutoresizingMaskIntoConstraints = false
         control.removeAllSegments()
@@ -41,19 +48,6 @@ class MovieListViewUI: UIView{
         return control
     }()
     
-    @objc func movieValueSelectedChanged(_ sender: UISegmentedControl) {
-        switch moviesSegmentedControl.selectedSegmentIndex {
-        case 0:
-            valueSelected = .popular
-        case 1:
-            valueSelected = .top_rated
-        case 2:
-            valueSelected = .upcoming
-        default:
-            valueSelected = .popular
-        }
-        delegate?.notifyGenderSelected()
-    }
     public lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -88,13 +82,18 @@ class MovieListViewUI: UIView{
     }
     
     func setUI(){
+        self.addSubview(navigationBar)
         self.addSubview(moviesSegmentedControl)
         self.addSubview(collectionView)
     }
     
     func setConstraints(){
         NSLayoutConstraint.activate([
-            moviesSegmentedControl.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            navigationBar.topAnchor.constraint(equalTo: topAnchor),
+            navigationBar.leadingAnchor.constraint(equalTo: leadingAnchor),
+            navigationBar.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            moviesSegmentedControl.topAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: 15),
             moviesSegmentedControl.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25),
             moviesSegmentedControl.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25),
             
@@ -103,6 +102,26 @@ class MovieListViewUI: UIView{
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
+    }
+    private func changeValues() {
+        movieList = nil
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
+    }
+    
+    @objc func movieValueSelectedChanged(_ sender: UISegmentedControl) {
+        switch moviesSegmentedControl.selectedSegmentIndex {
+        case 0:
+            valueSelected = .popular
+        case 1:
+            valueSelected = .top_rated
+        case 2:
+            valueSelected = .upcoming
+        default:
+            valueSelected = .popular
+        }
+        changeValues()
+        delegate?.notifyGenderSelected()
     }
 }
 extension MovieListViewUI: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -138,5 +157,11 @@ extension MovieListViewUI: UICollectionViewDelegate, UICollectionViewDataSource 
             
         }
         return cell
+    }
+}
+
+extension MovieListViewUI: movies_NavigationBarDelegate{
+    func buttonTapped() {
+        print("siguiente vista")
     }
 }

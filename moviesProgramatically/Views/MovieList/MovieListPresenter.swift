@@ -18,8 +18,11 @@ class MovieListPresenter {
 extension MovieListPresenter: MovieListPresenterProtocol {
     func requestMovieList(gender: moviesCategories) {
         self.view?.showLoading()
-        self.interactor?.fetchMovieList(gender: gender)
-    }
+        //se agrego un pequenio delay, para que se aprecie el loader
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            self.interactor?.fetchMovieList(gender: gender)
+    })
+}
     
     func responseMovieList(_ list: [Pelicula]) {
         self.view?.dissmissLoading()

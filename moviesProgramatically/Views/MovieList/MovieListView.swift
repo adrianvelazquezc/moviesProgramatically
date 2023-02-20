@@ -15,7 +15,7 @@ public enum ListService {
 class MovieListView: UIViewController {
     var presenter: MovieListPresenterProtocol?
     private var ui: MovieListViewUI?
-    private var currentStep: ListService = .initialList
+    lazy private var currentStep: ListService = .initialList
     
     internal var titleNavigation = "TV Shows" {
         didSet {
