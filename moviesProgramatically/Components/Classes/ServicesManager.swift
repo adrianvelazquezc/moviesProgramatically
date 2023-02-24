@@ -10,7 +10,7 @@ import Foundation
 class ServicesManager: NSObject {
     
     func getListMovies(completionHandler:@escaping(FavoriteMoviesListResponse?,Int?,Error?)->Void){
-        let urlString = "https://api.themoviedb.org/3/account/adrianvelazquezc/favorite/movies?"
+        let urlString = "\(MoviesValues.shared.initialPath)account/\(MoviesValues.shared.userName)/favorite/movies?"
         if var urlComponents = URLComponents(string: urlString) {
             urlComponents.queryItems = [
                 URLQueryItem(name: "api_key", value: MoviesValues.shared.apiKey),
@@ -42,7 +42,7 @@ class ServicesManager: NSObject {
     }
     public var currentId = 0
     func deleteFavorite(completionHandler:@escaping(PeliculaLogin?,Int?,Error?)->Void){
-        let urlString = "https://api.themoviedb.org/3/account/adrianvelazquezc/favorite?api_key=e142ca6d5b52024931683472e1abbef2&session_id=102be39b19425434cc3aa69cd2427e58d9294973"
+        let urlString = "\(MoviesValues.shared.initialPath)account/\(MoviesValues.shared.userName)/favorite?api_key=\(MoviesValues.shared.apiKey)&session_id=\(MoviesValues.shared.sesionID)"
         
         if let urlObject = URL(string: urlString){
             var urlRequest = URLRequest(url: urlObject)

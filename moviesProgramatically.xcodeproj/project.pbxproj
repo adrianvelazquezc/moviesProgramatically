@@ -135,14 +135,13 @@
 		CE1CCC33299FF6B8006B0C3C /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				CE76D74529A333C100999120 /* Classes */,
 				CE1CCC5729A2C86E006B0C3C /* movies_ActivityIndicator.swift */,
 				CE1CCC6129A318E4006B0C3C /* movies_NavigationBar.swift */,
 				CE76D74129A325C900999120 /* movies_ProfilePresent.swift */,
 				CE1CCC5D29A2DD1A006B0C3C /* movies_GeneralMoviesListViewCell.swift */,
+				CE76D74529A333C100999120 /* Classes */,
 				CE1CCC5A29A2D749006B0C3C /* Singleton */,
 				CE1CCC5929A2C876006B0C3C /* Extensions */,
-				CE76D74329A3325500999120 /* ServicesManager.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -182,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				CE76D74629A333E500999120 /* FavoriteMoviesListResponse.swift */,
+				CE76D74329A3325500999120 /* ServicesManager.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
